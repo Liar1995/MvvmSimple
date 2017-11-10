@@ -5,9 +5,10 @@ import android.arch.lifecycle.MutableLiveData;
 import android.util.Log;
 
 import com.sunmeng.mvvmsimple.app.UserApi;
-import com.sunmeng.mvvmsimple.db.UserDataSource;
+import com.sunmeng.mvvmsimple.statusdemo.Lcee;
+import com.sunmeng.mvvmsimple.statusdemo.UserDataSource;
 import com.sunmeng.mvvmsimple.roomdemo.User;
-import com.sunmeng.mvvmsimple.roomdemo.local.LocalUserDataSource;
+import com.sunmeng.mvvmsimple.statusdemo.local.LocalUserDataSource;
 import com.sunmeng.mvvmsimple.utils.RetrofitFactory;
 
 import retrofit2.Call;
@@ -34,24 +35,30 @@ public class RemoteUserDataSource implements UserDataSource {
     private UserApi userApi = RetrofitFactory.getInstance().create(UserApi.class);
 
     @Override
-    public LiveData<User> queryUserByUsername(String username) {
-        final MutableLiveData<User> data = new MutableLiveData<>();
+    public LiveData<Lcee<User>> queryUserByUsername(String username) {
+        final MutableLiveData<Lcee<User>> data = new MutableLiveData<>();
+        data.setValue(Lcee.loading());
+
         userApi.queryUserByUsername(username)
                 .enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         User user = response.body();
-                        if (null == user)
+                        if (null == user) {
+                            data.setValue(Lcee.empty());
                             return;
-                        data.setValue(user);
+                        }
+                        data.setValue(Lcee.content(user));
                         // update cache
                         LocalUserDataSource.getInstance().addUser(user);
+                        Log.i("summer","queryUserByUsername success ");
                     }
 
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {
-                        Log.i("summer","本地数据更新失败"+t.getMessage());
                         t.printStackTrace();
+                        Log.i("summer","queryUserByUsername error ");
+                        data.setValue(Lcee.error(t));
                     }
                 });
         return data;

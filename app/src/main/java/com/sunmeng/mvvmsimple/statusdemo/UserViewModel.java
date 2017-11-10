@@ -1,10 +1,12 @@
 package com.sunmeng.mvvmsimple.statusdemo;
 
+import android.arch.core.util.Function;
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.Transformations;
 import android.arch.lifecycle.ViewModel;
 
 import com.sunmeng.mvvmsimple.roomdemo.User;
-import com.sunmeng.mvvmsimple.roomdemo.UserRepository;
 
 
 /**
@@ -15,14 +17,21 @@ import com.sunmeng.mvvmsimple.roomdemo.UserRepository;
 
 public class UserViewModel extends ViewModel {
 
-    private com.sunmeng.mvvmsimple.roomdemo.UserRepository userRepository = UserRepository.getInstance();
+    private UserRepository userRepository = UserRepository.getInstance();
+    private MutableLiveData<String> ldUsername;
+    private LiveData<Lcee<User>> user;
 
-    private LiveData<User> user;
-
-    public LiveData<User> getUser(String username) {
-        if (null == user)
-            user = userRepository.getUser(username);
+    public LiveData<Lcee<User>> getUser() {
+        if (null == user) {
+            user = Transformations.switchMap(ldUsername, input -> userRepository.getUser(input));
+        }
         return user;
+    }
+
+    public void reload(String username) {
+        if (ldUsername == null)
+            ldUsername = new MutableLiveData<>();
+        ldUsername.setValue(username);
     }
 
 

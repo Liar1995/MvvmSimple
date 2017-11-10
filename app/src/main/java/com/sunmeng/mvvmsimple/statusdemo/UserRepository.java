@@ -4,7 +4,6 @@ import android.arch.lifecycle.LiveData;
 import android.content.Context;
 import android.util.Log;
 
-import com.sunmeng.mvvmsimple.db.UserDataSource;
 import com.sunmeng.mvvmsimple.roomdemo.User;
 
 import com.sunmeng.mvvmsimple.statusdemo.local.LocalUserDataSource;
@@ -35,7 +34,7 @@ public class UserRepository {
         this.context = context.getApplicationContext();
     }
 
-    public LiveData<User> getUser(String username) {
+    public LiveData<Lcee<User>> getUser(String username) {
         if (NetworkUtils.isConnected(context)) {
             Log.i("summer"," -- isConnected");
             return remoteUserDataSource.queryUserByUsername(username);

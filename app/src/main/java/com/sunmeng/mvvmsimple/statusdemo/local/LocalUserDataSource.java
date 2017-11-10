@@ -1,8 +1,12 @@
 package com.sunmeng.mvvmsimple.statusdemo.local;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MediatorLiveData;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
 
-import com.sunmeng.mvvmsimple.db.UserDataSource;
+import com.sunmeng.mvvmsimple.statusdemo.Lcee;
+import com.sunmeng.mvvmsimple.statusdemo.UserDataSource;
 import com.sunmeng.mvvmsimple.roomdemo.User;
 
 /**
@@ -24,8 +28,17 @@ public class LocalUserDataSource implements UserDataSource {
 
 
     @Override
-    public LiveData<User> queryUserByUsername(String username) {
-        return userService.queryByUsername(username);
+    public LiveData<Lcee<User>> queryUserByUsername(String username) {
+        final MediatorLiveData<Lcee<User>> data = new MediatorLiveData<>();
+        data.setValue(Lcee.<User>loading());
+        data.addSource(userService.queryByUsername(username), user -> {
+            if (null == user) {
+                data.setValue(Lcee.empty());
+            } else {
+                data.setValue(Lcee.content(user));
+            }
+        });
+        return data;
     }
 
 

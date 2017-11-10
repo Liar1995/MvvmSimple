@@ -2,6 +2,7 @@ package com.sunmeng.mvvmsimple.roomdemo.local;
 
 import android.arch.lifecycle.LiveData;
 
+import com.sunmeng.mvvmsimple.db.UserDataSource;
 import com.sunmeng.mvvmsimple.roomdemo.User;
 
 /**
