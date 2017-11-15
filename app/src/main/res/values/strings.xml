@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MvvmSimple</string>
+    <string name="network_error_click_to_reload">Network error, click to reload</string>
+    <string name="user_not_exist">User not exist</string>
 </resources>
