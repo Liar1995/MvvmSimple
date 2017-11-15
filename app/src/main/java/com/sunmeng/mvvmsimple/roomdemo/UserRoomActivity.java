@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.sunmeng.mvvmsimple.R;
+import com.sunmeng.mvvmsimple.db.User;
 
 /**
  * Created by sunmeng on 2017/11/9.

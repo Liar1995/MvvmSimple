@@ -1,7 +1,9 @@
-package com.sunmeng.mvvmsimple.db;
+package com.sunmeng.mvvmsimple.simpledatasourcedemo.common;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
+
+import com.sunmeng.mvvmsimple.db.User;
 
 /**
  * Created by sunmeng on 2017/11/9.

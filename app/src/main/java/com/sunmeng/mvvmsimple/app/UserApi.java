@@ -1,6 +1,6 @@
 package com.sunmeng.mvvmsimple.app;
 
-import com.sunmeng.mvvmsimple.roomdemo.User;
+import com.sunmeng.mvvmsimple.db.User;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -1,4 +1,4 @@
-package com.sunmeng.mvvmsimple.roomdemo.local;
+package com.sunmeng.mvvmsimple.simpledatasourcedemo.common.repository.local;
 
 import android.annotation.SuppressLint;
 import android.arch.lifecycle.LiveData;
@@ -6,9 +6,9 @@ import android.arch.lifecycle.MutableLiveData;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.sunmeng.mvvmsimple.db.DBHelper;
-import com.sunmeng.mvvmsimple.db.UserDao;
+import com.sunmeng.mvvmsimple.simpledatasourcedemo.common.DBHelper;
 import com.sunmeng.mvvmsimple.db.User;
+import com.sunmeng.mvvmsimple.simpledatasourcedemo.common.UserDao;
 
 /**
  * Created by sunmeng on 2017/11/9.
@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public LiveData<User> queryByUsername(String userName) {
+    public User queryByUsername(String userName) {
         return userDao.queryByUsername(userName);
     }
 }

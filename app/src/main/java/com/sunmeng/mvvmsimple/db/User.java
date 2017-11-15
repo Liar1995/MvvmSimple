@@ -1,4 +1,4 @@
-package com.sunmeng.mvvmsimple.roomdemo;
+package com.sunmeng.mvvmsimple.db;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;

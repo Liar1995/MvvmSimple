@@ -8,7 +8,7 @@ import android.util.Log;
 
 import com.sunmeng.mvvmsimple.db.DBHelper;
 import com.sunmeng.mvvmsimple.db.UserDao;
-import com.sunmeng.mvvmsimple.roomdemo.User;
+import com.sunmeng.mvvmsimple.db.User;
 
 /**
  * Created by sunmeng on 2017/11/9.

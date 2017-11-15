@@ -3,7 +3,7 @@ package com.sunmeng.mvvmsimple.roomdemo.local;
 import android.arch.lifecycle.LiveData;
 
 import com.sunmeng.mvvmsimple.db.UserDataSource;
-import com.sunmeng.mvvmsimple.roomdemo.User;
+import com.sunmeng.mvvmsimple.db.User;
 
 /**
  * Created by sunmeng on 2017/11/9.

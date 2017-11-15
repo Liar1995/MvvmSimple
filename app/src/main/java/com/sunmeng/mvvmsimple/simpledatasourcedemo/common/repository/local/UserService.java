@@ -1,4 +1,4 @@
-package com.sunmeng.mvvmsimple.statusdemo.local;
+package com.sunmeng.mvvmsimple.simpledatasourcedemo.common.repository.local;
 
 import android.arch.lifecycle.LiveData;
 
@@ -12,5 +12,5 @@ import com.sunmeng.mvvmsimple.db.User;
 
 public interface UserService {
     LiveData<Long> add(User user);
-    LiveData<User> queryByUsername(String userName);
+    User queryByUsername(String userName);
 }

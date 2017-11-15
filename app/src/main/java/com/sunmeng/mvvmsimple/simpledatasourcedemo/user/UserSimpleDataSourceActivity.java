@@ -1,4 +1,4 @@
-package com.sunmeng.mvvmsimple.statusdemo;
+package com.sunmeng.mvvmsimple.simpledatasourcedemo.user;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.sunmeng.mvvmsimple.R;
 import com.sunmeng.mvvmsimple.db.User;
+import com.sunmeng.mvvmsimple.simpledatasourcedemo.common.bean.Lcee;
 
 /**
  * Created by sunmeng on 2017/11/9.
@@ -21,7 +22,7 @@ import com.sunmeng.mvvmsimple.db.User;
  * Description:
  */
 
-public class UserStatusActivity extends AppCompatActivity {
+public class UserSimpleDataSourceActivity extends AppCompatActivity {
 
     EditText et_username;
     private TextView tvId;

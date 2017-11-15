@@ -4,7 +4,7 @@ import android.arch.lifecycle.LiveData;
 import android.content.Context;
 import android.util.Log;
 
-import com.sunmeng.mvvmsimple.roomdemo.User;
+import com.sunmeng.mvvmsimple.db.User;
 
 import com.sunmeng.mvvmsimple.statusdemo.local.LocalUserDataSource;
 import com.sunmeng.mvvmsimple.statusdemo.remote.RemoteUserDataSource;

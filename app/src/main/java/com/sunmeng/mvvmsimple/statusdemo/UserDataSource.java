@@ -2,7 +2,7 @@ package com.sunmeng.mvvmsimple.statusdemo;
 
 import android.arch.lifecycle.LiveData;
 
-import com.sunmeng.mvvmsimple.roomdemo.User;
+import com.sunmeng.mvvmsimple.db.User;
 
 /**
  * Created by sunmeng on 2017/11/9.

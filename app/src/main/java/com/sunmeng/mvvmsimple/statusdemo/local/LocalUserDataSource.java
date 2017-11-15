@@ -2,12 +2,10 @@ package com.sunmeng.mvvmsimple.statusdemo.local;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MediatorLiveData;
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
 
 import com.sunmeng.mvvmsimple.statusdemo.Lcee;
 import com.sunmeng.mvvmsimple.statusdemo.UserDataSource;
-import com.sunmeng.mvvmsimple.roomdemo.User;
+import com.sunmeng.mvvmsimple.db.User;
 
 /**
  * Created by sunmeng on 2017/11/9.

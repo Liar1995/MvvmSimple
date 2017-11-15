@@ -1,14 +1,9 @@
-package com.sunmeng.mvvmsimple.statusdemo.remote;
-
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.util.Log;
+package com.sunmeng.mvvmsimple.simpledatasourcedemo.common.repository.remte;
 
 import com.sunmeng.mvvmsimple.app.UserApi;
-import com.sunmeng.mvvmsimple.statusdemo.Lcee;
-import com.sunmeng.mvvmsimple.statusdemo.UserDataSource;
 import com.sunmeng.mvvmsimple.db.User;
-import com.sunmeng.mvvmsimple.statusdemo.local.LocalUserDataSource;
+import com.sunmeng.mvvmsimple.simpledatasourcedemo.common.repository.local.LocalUserDataSource;
+import com.sunmeng.mvvmsimple.simpledatasourcedemo.common.repository.UserDataSource;
 import com.sunmeng.mvvmsimple.utils.RetrofitFactory;
 
 import retrofit2.Call;
@@ -34,33 +29,24 @@ public class RemoteUserDataSource implements UserDataSource {
 
     private UserApi userApi = RetrofitFactory.getInstance().create(UserApi.class);
 
-    @Override
-    public LiveData<Lcee<User>> queryUserByUsername(String username) {
-        final MutableLiveData<Lcee<User>> data = new MutableLiveData<>();
-        data.setValue(Lcee.loading());
 
+    @Override
+    public void queryUserByUsername(String username, final Result<User> result) {
         userApi.queryUserByUsername(username)
                 .enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         User user = response.body();
-                        if (null == user) {
-                            data.setValue(Lcee.empty());
-                            return;
-                        }
-                        data.setValue(Lcee.content(user));
+                        result.onSuccess(user);
                         // update cache
                         LocalUserDataSource.getInstance().addUser(user);
-                        Log.i("summer","queryUserByUsername success ");
                     }
 
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {
                         t.printStackTrace();
-                        Log.i("summer","queryUserByUsername error ");
-                        data.setValue(Lcee.error(t));
+                        result.onFailed(t);
                     }
                 });
-        return data;
     }
 }

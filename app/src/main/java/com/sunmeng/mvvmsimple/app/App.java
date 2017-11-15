@@ -2,8 +2,8 @@ package com.sunmeng.mvvmsimple.app;
 
 import android.app.Application;
 
-import com.sunmeng.mvvmsimple.db.DBHelper;
-import com.sunmeng.mvvmsimple.statusdemo.UserRepository;
+import com.sunmeng.mvvmsimple.simpledatasourcedemo.common.DBHelper;
+import com.sunmeng.mvvmsimple.simpledatasourcedemo.common.repository.UserRepository;
 
 /**
  * Created by sunmeng on 2017/11/9.

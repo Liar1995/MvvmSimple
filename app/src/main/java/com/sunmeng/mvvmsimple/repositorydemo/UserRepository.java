@@ -4,7 +4,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 
 import com.sunmeng.mvvmsimple.app.UserApi;
-import com.sunmeng.mvvmsimple.roomdemo.User;
+import com.sunmeng.mvvmsimple.db.User;
 import com.sunmeng.mvvmsimple.utils.RetrofitFactory;
 
 import retrofit2.Call;
